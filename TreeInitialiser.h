@@ -19,6 +19,13 @@ public:
 	virtual ~TreeInitialiser();
 	void loadSettingsFile(std::string filePath);
 	void printSettingsFile(std::string filePath);
+	void printJSONTree(std::string filePath);
+	void loadJSONTree(std::string filePath);
+
+// 	TODO:
+//	void printJSONTree(std::string filePath, std::string pathInTree = "");
+//	void loadJSONTree(std::string filePath, std::string pathInTree = "");
+
 private:
 	std::shared_ptr<boost::property_tree::ptree> treePtr;
 };
