@@ -8,20 +8,28 @@
 #include <fstream>
 #include <iostream>
 #include <boost/property_tree/ptree.hpp>
-#include "TreeInitialiser.h"
-
+//#include <boost/property_tree/json_parser.hpp>
+#include "OutputHandler.h"
 
 int main(int argc, char * argv[]){
 
-	if (argc>2){
-		TreeInitialiser treeInitialiser;
-
-		treeInitialiser.loadSettingsFile(argv[1]);
-		treeInitialiser.printJSONTree(argv[2]+std::string(".json"));
-		treeInitialiser.printSettingsFile(argv[2]+std::string(".txt"));
-
-		std::cout << "done" << std::endl;
-	}
+//	boost::property_tree::ptree tree;
+	
+//	tree.add_child("grid",OutputHandler::loadGrid("GRD_u0113"));
+//	tree.add_child("parts",OutputHandler::loadParticleFile("PART_0113"));
+//	
+//	boost::property_tree::write_json(std::cout,tree);
+	
+	
+//	if (argc>2){
+//		TreeInitialiser treeInitialiser;
+//
+//		treeInitialiser.loadSettingsFile(argv[1]);
+//		treeInitialiser.printJSONTree(argv[2]+std::string(".json"));
+//		treeInitialiser.printSettingsFile(argv[2]+std::string(".txt"));
+//
+//		std::cout << "done" << std::endl;
+//	}
 //	std::string test;
 //	std::getline(std::cin,test);
 //	std::cout << test.length();
