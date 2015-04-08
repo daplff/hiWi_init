@@ -23,17 +23,17 @@ int main(int argc, char * argv[]){
 
 		treeInitialiser.loadSettingsFile(argv[1]);
 		treeInitialiser.printJSONTree(argv[2]+std::string(".json"));
-		treeInitialiser.printSettingsFile(argv[2]));
+		treeInitialiser.printSettingsFile(argv[2]);
 		
 		std::cout << "done, calling script" << std::endl;
 		
-		std::system(argv[3]+std::string(" <" ) + argv[2] + ".txt>lineoutput.txt");
+		std::system((argv[3]+std::string(" <" ) + argv[2] + ".txt>lineoutput.txt").c_str());
 		
 		std::cout << "program done" <<std::endl;
 		boost::property_tree::ptree& tree = *(treeInitialiser.getTreePtr());
 		tree.add_child("time-dt", OutputHandler::loadDtFile("DT"));
 		std::cout<<"loaded DT" << std::endl;
-		tree.add_child("particles", OutputHandler::loadParticleFile("PART_0113");
+		tree.add_child("particles", OutputHandler::loadParticleFile("PART_0113"));
 		std::cout<<"loaded particles" << std::endl;
 		tree.add_child("GRD_d", OutputHandler::loadGrid("GRD_d0113"));
 		std::cout<<"loaded GRD_d" << std::endl;
