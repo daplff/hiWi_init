@@ -10,26 +10,40 @@
 #include <boost/property_tree/ptree.hpp>
 //#include <boost/property_tree/json_parser.hpp>
 #include "OutputHandler.h"
+#include "TreeInitialiser.h"
+#include <cstdlib>
 
 int main(int argc, char * argv[]){
 
-//	boost::property_tree::ptree tree;
-	
-//	tree.add_child("grid",OutputHandler::loadGrid("GRD_u0113"));
-//	tree.add_child("parts",OutputHandler::loadParticleFile("PART_0113"));
-//	
-//	boost::property_tree::write_json(std::cout,tree);
+
 	
 	
-//	if (argc>2){
-//		TreeInitialiser treeInitialiser;
-//
-//		treeInitialiser.loadSettingsFile(argv[1]);
-//		treeInitialiser.printJSONTree(argv[2]+std::string(".json"));
-//		treeInitialiser.printSettingsFile(argv[2]+std::string(".txt"));
-//
-//		std::cout << "done" << std::endl;
-//	}
+	if (argc>3){
+		TreeInitialiser treeInitialiser;
+
+		treeInitialiser.loadSettingsFile(argv[1]);
+		treeInitialiser.printJSONTree(argv[2]+std::string(".json"));
+		treeInitialiser.printSettingsFile(argv[2]+std::string(".txt"));
+		
+		std::cout << "done, calling script" << std::endl;
+		
+		std::system(argv[3]+std::string(" <" ) + argv[2] + ".txt>lineoutput.txt");
+		
+		std::cout << "program done" <<std::endl;
+		boost::property_tree::ptree& tree = *(treeInitialiser.getTreePtr());
+		tree.add_child("time-dt", OutputHandler::loadDtFile("DT"));
+		std::cout<<"loaded DT" << std::endl;
+		tree.add_child("particles", OutputHandler::loadParticleFile("PART_0113");
+		std::cout<<"loaded particles" << std::endl;
+		tree.add_child("GRD_d". OutputHandler::loadGrid("GRD_d0113"));
+		std::cout<<"loaded GRD_d" << std::endl;
+		tree.add_child("GRD_u". OutputHandler::loadGrid("GRD_u0113"));
+		std::cout<<"loaded GRD_u" << std::endl;
+		tree.add_child("GRD_v". OutputHandler::loadGrid("GRD_v0113"));
+		std::cout<<"loaded GRD_v" << std::endl;
+		treeInitialiser.printJSONTree(argv[2]+std::string("_full.json"));
+		std::cout<<"printed tree, finished" << std::endl;
+		}
 //	std::string test;
 //	std::getline(std::cin,test);
 //	std::cout << test.length();
